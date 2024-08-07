@@ -8,9 +8,7 @@
 import Foundation
 
 final class NavigationFlowViewModel: ObservableObject {
-    @Published private(set) var viewTab: ViewTab = .posts(user: 1) { didSet { updateViewTab() } }
-    @Published var title: String = ""
-    
+    @Published private(set) var viewTab: ViewTab = .posts(user: 1)
     private(set) var currentUserId: Int = 1
     
     init() {
@@ -26,7 +24,6 @@ extension NavigationFlowViewModel {
             return
         default:
             viewTab = .posts(user: currentUserId)
-            viewTab = .posts(user: currentUserId)
         }
     }
     
@@ -35,22 +32,11 @@ extension NavigationFlowViewModel {
     }
     
     func onChangeUser(_ newId: Int) {
+        currentUserId = newId
         viewTab = .posts(user: newId)
     }
     
     func onOpenComment(for postId: Int) {
         viewTab = .comments(post: postId)
-    }
-}
-
-private extension NavigationFlowViewModel {
-    func updateViewTab() {
-        switch viewTab {
-        case .posts(_):
-            title = viewTab.defaultTitle
-        case .user(let id):
-            currentUserId = id
-        default: return
-        }
     }
 }

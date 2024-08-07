@@ -14,6 +14,7 @@ struct LivitiaTestTaskApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, initializer.viewContext)
         }
     }
 }
