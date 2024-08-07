@@ -19,33 +19,50 @@ struct DetailsView: View {
             Button {
                 onClick?()
             } label: {
-                VStack(alignment: .leading) {
-                    Spacer()
-                    
-                    Group {
-                        Text(title)
-                            .font(.title3)
-                            .lineLimit(1)
-                        
-                        if let message = message {
-                            Text(message)
-                                .font(.subheadline)
-                                .lineLimit(2)
-                                .opacity(0.8)
-                        }
-                    }
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, horizontalOffset)
-                    
-                    Spacer()
-                    
-                    Rectangle()
-                        .fill(.black)
-                        .frame(height: 1)
-                        .padding(.leading, horizontalOffset)
-                }
-                .foregroundStyle(.white)
+                contentView()
             }
+            .disabled(onClick == nil)
+        }
+    }
+}
+
+private extension DetailsView {
+    func contentView() -> some View {
+        VStack(alignment: .leading) {
+            Spacer()
+            bodyView()
+            footerView()
+        }
+        .foregroundStyle(.white)
+    }
+    
+    func bodyView() -> some View {
+        VStack(alignment: .leading) {
+            Group {
+                Text(title)
+                    .font(.title3)
+                    .lineLimit(1)
+                
+                if let message = message {
+                    Text(message)
+                        .font(.subheadline)
+                        .lineLimit(2)
+                        .opacity(0.8)
+                }
+            }
+            .multilineTextAlignment(.leading)
+            .padding(.horizontal, horizontalOffset)
+            
+            Spacer()
+        }
+    }
+    
+    func footerView() -> some View {
+        VStack(alignment: .leading) {
+            Rectangle()
+                .fill(.black)
+                .frame(height: 1)
+                .padding(.leading, horizontalOffset)
         }
     }
 }
