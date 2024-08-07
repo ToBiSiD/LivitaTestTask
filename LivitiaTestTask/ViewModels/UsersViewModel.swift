@@ -33,8 +33,8 @@ private extension UsersViewModel {
         Task {
             do {
                 let users = try await apiService.fetchUsers()
-                cacheUsers(users)
                 DispatchQueue.main.async { [weak self] in
+                    self?.cacheUsers(users)
                     self?.users = users
                     self?.state = .ready
                 }
@@ -47,7 +47,6 @@ private extension UsersViewModel {
     func tryGetFromCache() -> Bool{
         let cached: [UserEntity] = storage.fetchData()
         if !cached.isEmpty {
-            Logger.printLog("Use cached users \(cached.count)", type: .action)
             users = cached.map({ $0.toUserData() })
             state = .ready
         }

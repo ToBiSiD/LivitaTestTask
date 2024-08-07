@@ -44,8 +44,8 @@ private extension CommentsViewModel {
         Task {
             do {
                 let comments = try await apiService.fetchComments(for: postId)
-                self.cacheComments(comments)
                 DispatchQueue.main.async { [weak self] in
+                    self?.cacheComments(comments)
                     self?.comments = comments
                     self?.state = .ready
                 }
@@ -59,7 +59,6 @@ private extension CommentsViewModel {
         let cached: [CommentEntity] = storage.fetchData()
         if !cached.isEmpty {
             comments = cached.map({ $0.toCommentData() }).filter({ $0.postId == postId })
-            Logger.printLog("Use cached comments \(comments.count)", type: .action)
         }
         
         return !comments.isEmpty

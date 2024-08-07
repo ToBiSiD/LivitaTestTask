@@ -15,14 +15,29 @@ struct CommentsView: View {
     }
     
     var body: some View {
+        contentView()
+    }
+}
+
+private extension CommentsView {
+    func contentView() -> some View {
+        VStack {
+            switch viewModel.state {
+            case .ready: dataListView()
+            default: LoadingView()
+            }
+            
+            Spacer()
+        }
+    }
+    
+    func dataListView() -> some View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach(viewModel.comments) { comment in
                     DetailsView(title: comment.email, message: comment.body)
                 }
             }
-            
-            Spacer()
         }
     }
 }

@@ -40,8 +40,8 @@ private extension PostsViewModel {
         Task {
             do {
                 let posts = try await apiService.fetchPosts(for: userId)
-                self.cachePosts(posts)
                 DispatchQueue.main.async { [weak self] in
+                    self?.cachePosts(posts)
                     self?.posts = posts
                     self?.state = .ready
                 }
@@ -55,7 +55,6 @@ private extension PostsViewModel {
         let cached: [PostEntity] = storage.fetchData()
         if !cached.isEmpty {
             posts = cached.map({ $0.toPostData() }).filter({ $0.userId == userId })
-            Logger.printLog("Use cached posts \(posts.count)", type: .action)
         }
         
         return !posts.isEmpty

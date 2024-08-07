@@ -24,15 +24,22 @@ struct PostsView: View {
 private extension PostsView {
     func contentView() -> some View {
         VStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                ForEach(viewModel.posts) { post in
-                    DetailsView(title: post.title, message: post.body) {
-                        onOpenComment?(post.id)
-                    }
-                }
+            switch viewModel.state {
+            case .ready: dataListView()
+            default: LoadingView()
             }
             
             Spacer()
+        }
+    }
+    
+    func dataListView() -> some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            ForEach(viewModel.posts) { post in
+                DetailsView(title: post.title, message: post.body) {
+                    onOpenComment?(post.id)
+                }
+            }
         }
     }
 }

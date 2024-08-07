@@ -54,6 +54,8 @@
 		D2DF0E692C63E38100D94219 /* UserEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DF0E682C63E38100D94219 /* UserEntity+Extensions.swift */; };
 		D2DF0E6B2C63E60500D94219 /* CommentEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DF0E6A2C63E60500D94219 /* CommentEntity+Extensions.swift */; };
 		D2DF0E6D2C63E65300D94219 /* PostEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DF0E6C2C63E65300D94219 /* PostEntity+Extensions.swift */; };
+		D2DF0E6F2C63EA2D00D94219 /* LoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DF0E6E2C63EA2D00D94219 /* LoadingCircleView.swift */; };
+		D2DF0E732C63EB9900D94219 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DF0E722C63EB9900D94219 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +107,8 @@
 		D2DF0E682C63E38100D94219 /* UserEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+Extensions.swift"; sourceTree = "<group>"; };
 		D2DF0E6A2C63E60500D94219 /* CommentEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommentEntity+Extensions.swift"; sourceTree = "<group>"; };
 		D2DF0E6C2C63E65300D94219 /* PostEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostEntity+Extensions.swift"; sourceTree = "<group>"; };
+		D2DF0E6E2C63EA2D00D94219 /* LoadingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircleView.swift; sourceTree = "<group>"; };
+		D2DF0E722C63EB9900D94219 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				D2DF0DDE2C63690600D94219 /* Logger */,
+				D2DF0E702C63EA6100D94219 /* Reusable */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -275,13 +280,30 @@
 		D2DF0E0E2C63709700D94219 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D2DF0E0F2C6370A400D94219 /* PostsView.swift */,
+				D2DF0E712C63EB7F00D94219 /* DataViews */,
 				D2DF0E582C63CDD200D94219 /* DetailsView.swift */,
 				D2DF0E112C6370E400D94219 /* NavBarView.swift */,
+				D2DF0E722C63EB9900D94219 /* LoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D2DF0E702C63EA6100D94219 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				D2DF0E6E2C63EA2D00D94219 /* LoadingCircleView.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		D2DF0E712C63EB7F00D94219 /* DataViews */ = {
+			isa = PBXGroup;
+			children = (
+				D2DF0E0F2C6370A400D94219 /* PostsView.swift */,
 				D2DF0E5A2C63D36C00D94219 /* CommentsView.swift */,
 				D2DF0E5E2C63D6EB00D94219 /* UsersView.swift */,
 			);
-			path = Views;
+			path = DataViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,11 +390,13 @@
 				D2DF0DE82C6369CC00D94219 /* DependencyInjector.swift in Sources */,
 				D2DF0DFD2C636C5800D94219 /* HTTPMethods.swift in Sources */,
 				D2DF0DCF2C63675C00D94219 /* LivitiaTestTask.xcdatamodeld in Sources */,
+				D2DF0E732C63EB9900D94219 /* LoadingView.swift in Sources */,
 				D2DF0DEF2C636A4D00D94219 /* DataStorage.swift in Sources */,
 				D2DF0DFF2C636C6700D94219 /* NetworkError.swift in Sources */,
 				D2DF0DF32C636A8A00D94219 /* CDStorageService.swift in Sources */,
 				D2DF0E4B2C63860700D94219 /* CommentEntity+CoreDataClass.swift in Sources */,
 				D2DF0E4C2C63860700D94219 /* CommentEntity+CoreDataProperties.swift in Sources */,
+				D2DF0E6F2C63EA2D00D94219 /* LoadingCircleView.swift in Sources */,
 				D2DF0E4D2C63860700D94219 /* PostEntity+CoreDataClass.swift in Sources */,
 				D2DF0E4E2C63860700D94219 /* PostEntity+CoreDataProperties.swift in Sources */,
 				D2DF0E4F2C63860700D94219 /* UserEntity+CoreDataClass.swift in Sources */,
@@ -532,6 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LivitiaTestTask/Preview Content\"";
+				DEVELOPMENT_TEAM = WWVXY36FK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -560,6 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LivitiaTestTask/Preview Content\"";
+				DEVELOPMENT_TEAM = WWVXY36FK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
