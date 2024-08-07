@@ -9,12 +9,11 @@ import SwiftUI
 
 @main
 struct LivitiaTestTaskApp: App {
-    let persistenceController = PersistenceController.shared
+    private var initializer: ServicesInitializer = .init()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
